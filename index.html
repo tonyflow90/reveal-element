@@ -26,14 +26,30 @@
       justify-content: center;
     }
 
+    .card {
+      max-width: 800px;
+      margin: 24px;
+      padding: 16px;
+      color: #757575;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    input {
+      width: 100%;
+      margin: 5px;
+      text-align: end;
+    }
+
     reveal-element {
       border-radius: 50%;
     }
   </style>
 </head>
 
-<body>
-  <div class="centered">
+<body class="centered">
+  <div class="centered card">
     <h3>Basic reveal-element demo</h3>
     <input id="scale" type="number" name="scale" step=".1" value=".6" min="0" max=".9">
     <input id="radius" type="number" name="border-radius" step="1" value="50" min="0" max="50">
