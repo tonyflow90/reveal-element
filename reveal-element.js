@@ -18,19 +18,19 @@ class RevealElement extends HTMLElement {
             this.targetScale = this.scale
         })
         this.addEventListener('pointerover', () => {
-            this.targetScale = 1
+            this.targetScale = .9
         })
     }
 
     update() {
         const outer = this.shadowRoot.querySelector('.outer')
         const inner = this.shadowRoot.querySelector('.inner')
-        
-        this.elementScale += (this.targetScale - this.elementScale) * .1 
+
+        this.elementScale += (this.targetScale - this.elementScale) * .1
         let innerScale = 1 / this.elementScale;
 
-        outer.style.transform = `scale(${this.elementScale})`
-        inner.style.transform = `scale(${innerScale})`
+        outer.style.transform = `scale(${this.elementScale.toPrecision(3)})`
+        inner.style.transform = `scale(${innerScale.toPrecision(3)})`
         requestAnimationFrame(this.update.bind(this))
     }
 
@@ -51,6 +51,7 @@ class RevealElement extends HTMLElement {
                     this.scale = parseFloat(newVal);
                     this.targetScale = this.scale;
                     this.elementScale = this.targetScale;
+                    this.dispatchEvent(new Event('pointerout'))
                 break;
         }
     }

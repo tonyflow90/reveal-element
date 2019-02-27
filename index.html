@@ -7,7 +7,7 @@
 
   <title>reveal-element demo</title>
   <script type="module">
-      import "./reveal-element.js"
+    import "./reveal-element.js"
   </script>
 
   <style>
@@ -25,16 +25,30 @@
       align-items: center;
       justify-content: center;
     }
+
+    reveal-element {
+      border-radius: 50%;
+    }
   </style>
 </head>
 
 <body>
   <div class="centered">
     <h3>Basic reveal-element demo</h3>
-    <reveal-element scale=".6">
+    <input id="scale" type="number" name="scale" step=".1" value=".6" min="0" max=".9">
+    <input id="radius" type="number" name="border-radius" step="1" value="50" min="0" max="50">
+    <reveal-element id="element" scale=".6">
       <img src="./assets/logo.png" />
     </reveal-element>
   </div>
+  <script>
+    document.querySelector('#scale').onchange = function () {
+      document.querySelector('#element').setAttribute('scale', parseFloat(document.querySelector('#scale').value))
+    };
+    document.querySelector('#radius').onchange = function () {
+      document.querySelector('#element').style.borderRadius = `${document.querySelector('#radius').value}%`
+    };
+  </script>
 </body>
 
 </html>
